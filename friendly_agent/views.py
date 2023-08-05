@@ -21,9 +21,22 @@ class ClientListEncoder(ModelEncoder):
     model = Client
     properties = [
         "first_name",
+        "middle_name",
         "last_name",
+        "dob",
+        "email",
+        "street",
+        "city",
+        "zipcode",
+        "state",
+        "home_phone",
+        "cell_phone",
+        "frequent_travel_group",
         "id",
     ]
+    encoders = {
+        "frequent_travel_group": FrequentTravelGroupEncoder(),
+    }
 
 
 class FlightListEncoder(ModelEncoder):

@@ -31,10 +31,14 @@ class ModelEncoder(DateEncoder, QuerySetEncoder, JSONEncoder):
                 d["href"] = o.get_api_url()
             for property in self.properties:
                 value = getattr(o, property)
-                if property in self.encoders:
+                if value is None:
+                    d[property] = ""
+                elif property in self.encoders:
                     encoder = self.encoders[property]
                     value = encoder.default(value)
-                d[property] = value
+                    d[property] = value
+                else:
+                    d[property] = value
             d.update(self.get_extra_data(o))
             return d
         else:
