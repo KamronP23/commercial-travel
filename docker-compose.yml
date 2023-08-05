@@ -1,0 +1,42 @@
+services:
+  react:
+    image: node:lts-bullseye
+    command: npm start
+    working_dir: /frontend
+    volumes:
+      - ./ghi/frontend:/frontend
+    ports:
+      - "3000:3000"
+    environment:
+      HOST_OS: ${OS}
+      NODE_ENV: development
+      HOST: "0.0.0.0"
+  database:
+    image: postgres:14.2-bullseye
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db:/docker-entrypoint-initdb.d
+    environment:
+      - POSTGRES_DB=friendly_agent
+      - POSTGRES_PASSWORD=test-databases
+    ports:
+      - 15432:5432
+
+  friendly_agent:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    depends_on:
+      - database
+    environment:
+      DATABASE_URL: postgres://friendly_agent:password@database:5432/friendly_agent
+      WAIT_HOSTS: database:5432
+      WAIT_TIMEOUT: 240
+
+volumes:
+  pgdata:
+    external: true
