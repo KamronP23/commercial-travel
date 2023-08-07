@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 function ClientList() {
   const [clients, setClients] = useState([]);
-  const [sortedClients, setSortedClients] = useState([]); // State variable for sorted clients
+  const [sortedClients, setSortedClients] = useState([]);
 
   const getClients = async () => {
     const url = 'http://localhost:8000/friendly_agent/clients/';
