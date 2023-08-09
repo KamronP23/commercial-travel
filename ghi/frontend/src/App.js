@@ -6,6 +6,7 @@ import ClientList from "./components/Clients/ClientList"
 import FrequentTravelGroupList from './components/FrequentTravelGroups/FrequentTravelGroupList';
 import FlightList from './components/Flights/FlightList';
 import HotelList from './components/Hotels/HotelList';
+import PackageList from './components/Packages/PackageList';
 function App() {
   return (
     <div className="container">
@@ -15,6 +16,7 @@ function App() {
           <Route path="groups/" element={<FrequentTravelGroupList />} />
           <Route path="flights/" element={<FlightList />} />
           <Route path="hotels/" element={<HotelList />} />
+          <Route path="packages/" element={<PackageList />} />
         </Routes>
       </BrowserRouter>
     </div>
