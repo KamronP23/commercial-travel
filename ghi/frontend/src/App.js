@@ -5,6 +5,7 @@ import React from 'react';
 import ClientList from "./components/Clients/ClientList"
 import FrequentTravelGroupList from './components/FrequentTravelGroups/FrequentTravelGroupList';
 import FlightList from './components/Flights/FlightList';
+import HotelList from './components/Hotels/HotelList';
 function App() {
   return (
     <div className="container">
@@ -13,6 +14,7 @@ function App() {
           <Route path="clients/" element={<ClientList />} />
           <Route path="groups/" element={<FrequentTravelGroupList />} />
           <Route path="flights/" element={<FlightList />} />
+          <Route path="hotels/" element={<HotelList />} />
         </Routes>
       </BrowserRouter>
     </div>
