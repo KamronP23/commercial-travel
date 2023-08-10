@@ -131,38 +131,44 @@ class PackageListEncoder(ModelEncoder):
 
         # Clients
         clients = o.clients.all()
-        clients_id = []
-        for client in clients:
-            clients_id.append(client.id)
-        extra_data["clients"] = clients_id
+        clients_data = [{
+            "id": client.id,
+            "first_name": client.first_name,
+            "last_name": client.last_name,
+        } for client in clients]
+        extra_data["clients"] = clients_data
 
         # Groups
         groups = o.groups.all()
-        groups_id = []
-        for group in groups:
-            groups_id.append(group.id)
-        extra_data["groups"] = groups_id
+        groups_data = [{
+            "id": group.id,
+            "group_name": group.group_name,
+        } for group in groups]
+        extra_data["groups"] = groups_data
 
         # Flights
         flights = o.flights.all()
-        flights_id = []
-        for flight in flights:
-            flights_id.append(flight.id)
-        extra_data["flights"] = flights_id
+        flights_data = [{
+            "id": flight.id,
+            "flight_details": flight.flight_details,
+        } for flight in flights]
+        extra_data["flights"] = flights_data
 
         # Hotels
         hotels = o.hotels.all()
-        hotels_id = []
-        for hotel in hotels:
-            hotels_id.append(hotel.id)
-        extra_data["hotels"] = hotels_id
+        hotels_data = [{
+            "id": hotel.id,
+            "hotel_details": hotel.hotel_details,
+        } for hotel in hotels]
+        extra_data["hotels"] = hotels_data
 
         # Cruises
         cruises = o.cruises.all()
-        cruises_id = []
-        for cruise in cruises:
-            cruises_id.append(cruise.id)
-        extra_data["cruises"] = cruises_id
+        cruises_data = [{
+            "id": cruise.id,
+            "cruise_details": cruise.cruise_details,
+        } for cruise in cruises]
+        extra_data["cruises"] = cruises_data
 
         return extra_data
 
