@@ -19,15 +19,23 @@ class FrequentTravelGroupEncoder(ModelEncoder):
     def get_extra_data(self, o):
         extra_data = {}
 
-        # Clients associated with this group
+        # Clients
         clients = Client.objects.filter(frequent_travel_group=o)
-        clients_id = [client.id for client in clients]
-        extra_data["clients"] = clients_id
+        clients_data = [{
+            "id": client.id,
+            "first_name": client.first_name,
+            "last_name": client.last_name,
+            # Other relevant attributes
+        } for client in clients]
+        extra_data["clients"] = clients_data
 
-        # Packages associated with this group
+        # Packages
         packages = Package.objects.filter(groups=o)
-        packages_id = [package.id for package in packages]
-        extra_data["packages"] = packages_id
+        packages_data = [{
+            "id": package.id,
+            "trip_name": package.trip_name,
+        } for package in packages]
+        extra_data["packages"] = packages_data
 
         return extra_data
 

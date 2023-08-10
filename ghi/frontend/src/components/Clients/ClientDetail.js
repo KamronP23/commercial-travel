@@ -5,6 +5,7 @@ function ClientDetail() {
     const [client, setClient] = useState({});
     const { id } = useParams();
     const navigate = useNavigate();
+
     async function getClient(client_id) {
       try {
         const url = `http://localhost:8000/friendly_agent/clients/${client_id}/`;
@@ -47,8 +48,6 @@ function ClientDetail() {
                     <button onClick={() => navigate('/clients')}>Back</button>
                 </div>
             </div>
-
-
         </div>
     )
 }
