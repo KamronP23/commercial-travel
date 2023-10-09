@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     "corsheaders",
     "friendly_agent.apps.FriendlyAgentConfig",
+    "vacations.apps.VacationsConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
